@@ -1,3 +1,65 @@
-h1 {
-  color: blue;
+@import "normalize";
+
+$primaryColor: #28B0CE;
+$secondaryColor: #47E8B1;
+$tertiaryColor: #A17BF9;
+$light-text-color: white;
+$dark-text-color: black;
+$header-box-shadow: 0 1px 3px 0 rgba(27,36,50,.15);
+
+* {
+  font-family: 'Roboto', sans-serif;
+}
+
+.nav-container {
+  box-shadow: $header-box-shadow;
+}
+
+.nav-list {
+  align-items: center;
+  display: flex;
+  height: 72px;
+  justify-content: flex-end;
+  margin: 0;
+  padding: 0;
+
+  &__item {
+    list-style-type: none;
+    margin: 10px;
+  }
+}
+
+.app-title {
+  font-size: 20px;
+  margin: 0 5px;
+}
+
+.logo {
+  background: linear-gradient(45deg, $primaryColor 0%, $tertiaryColor 100%);
+  border-radius: 50%;
+  display: inline-block;
+  height: 20px;
+  width: 20px;
+}
+
+.brand {
+  align-items: center;
+  display: flex;
+  margin-right: auto;
+  vertical-align: center;
+}
+
+.sign-in-button {
+  border: 2px solid $secondaryColor;
+  border-radius: 3px;
+  color: $secondaryColor;
+  padding: 5px;
+}
+
+.new-run-button {
+  background: $secondaryColor;
+  border-radius: 3px;
+  color: $light-text-color;
+  $light-text-color: black;
+  padding: 5px;
 }
