@@ -1,0 +1,40 @@
+.run-tracker-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.primary-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.secondary-container {
+  align-items: center;
+  display: flex;
+  justify-content: space-around;
+}
+
+.distance {
+  font-size: 72px;
+}
+
+.elasped-time {
+  font-size: 36px;
+}
+
+.pace {
+  font-size: 36px;
+}
+
+.button-container {
+  align-items: center;
+  color: $primaryColor;
+  display: flex;
+  font-size: 72px;
+  justify-content: center;
+}
+
+.run-button {
+  margin: 0 18px;
+}

@@ -1,0 +1,26 @@
+<div class="run-tracker-container">
+  <section class="primary-container">
+    <span class="distance">{{distance-tracker}}</span>
+    <div>miles</div>
+  </section>
+
+
+  <section class="secondary-container">
+    <span class="elasped-time">{{stopwatch-timer}}</span>
+
+    <span class="pace">{{pace-tracker}}</span>
+  </section>
+
+  <section class="button-container">
+    <span class="run-button primary-button">
+      {{#if isRunning}}
+        {{fa-icon "fa-pause-circle"}}
+      {{else}}
+        {{fa-icon "fa-play-circle"}}
+      {{/if}}
+    </span>
+    <span class="run-button secondary-button">
+      {{fa-icon "fa-stop-circle"}}
+    </span>
+  </section>
+</div>
