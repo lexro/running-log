@@ -5,11 +5,15 @@ export default Ember.Component.extend({
   initTimer: Ember.on('init', function () {
     const _this = this;
 
-    setInterval(() => {
+    const timerInterval = setInterval(() => {
       const time = _this.read();
       _this.set('currentTime', time);
     }, 1);
+
+    this.set('timerInterval', timerInterval);
   }),
+
+  timerInterval: null,
 
   currentTime: 0,
 
@@ -37,6 +41,10 @@ export default Ember.Component.extend({
   },
 
   reset() {
+    clearInterval(this.get('timerInterval'));
+  },
 
+  willDestroyElement() {
+    this.reset();
   }
 });
