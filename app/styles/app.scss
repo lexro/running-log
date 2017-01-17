@@ -11,6 +11,18 @@ $header-box-shadow: 0 1px 3px 0 rgba(27,36,50,.15);
   font-family: 'Roboto', sans-serif;
 }
 
+.app-header {
+  background: white;
+  left: 0;
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.body-content {
+  margin-top: 72px;
+}
+
 .nav-container {
   box-shadow: $header-box-shadow;
 }
@@ -64,4 +76,11 @@ $header-box-shadow: 0 1px 3px 0 rgba(27,36,50,.15);
   padding: 5px;
 }
 
+a {
+  cursor: pointer;
+  text-decoration: none;
+}
+
 @import 'new-run';
+@import 'log';
+@import 'components/date-tile';

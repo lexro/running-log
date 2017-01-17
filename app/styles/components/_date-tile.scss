@@ -1,0 +1,10 @@
+.date-tile {
+  color: $primaryColor;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+
+  &__day {
+    font-size: 32px; // TODO: responsive font size
+  }
+}
