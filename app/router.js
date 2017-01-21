@@ -10,6 +10,7 @@ Router.map(function() {
   this.route('new-run');
   this.route('log');
   this.route('run', { path: "run/:runId" });
+  this.route('login');
 });
 
 export default Router;

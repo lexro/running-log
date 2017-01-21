@@ -10,9 +10,11 @@
             New Run+
           </li>
         {{/link-to}}
-      <li class="nav-list__item sign-in-button">
-        Sign In
-      </li>
+        {{#link-to 'login'}}
+          <li class="nav-list__item sign-in-button">
+            Sign In
+          </li>
+        {{/link-to}}
     </ul>
   </nav>
 </header>

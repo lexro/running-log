@@ -1,14 +1,16 @@
-@import 'settings';
-@import "foundation-sites/foundation";
-@include foundation-everything;
-@import 'normalize'; // TODO switch to foundation normalize
-
 $primaryColor: #28B0CE;
+$primary-color: $primaryColor;
 $secondaryColor: #47E8B1;
+$secondary-color: $secondaryColor;
 $tertiaryColor: #A17BF9;
 $light-text-color: white;
 $dark-text-color: black;
 $header-box-shadow: 0 1px 3px 0 rgba(27,36,50,.15);
+
+@import 'settings';
+@import "foundation-sites/foundation";
+@include foundation-everything;
+@import 'normalize'; // TODO switch to foundation normalize
 
 * {
   font-family: 'Roboto', sans-serif;
@@ -84,6 +86,7 @@ a {
   text-decoration: none;
 }
 
-@import 'new-run';
-@import 'log';
 @import 'components/date-tile';
+@import 'log';
+@import 'login';
+@import 'new-run';
