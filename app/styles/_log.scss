@@ -6,11 +6,11 @@
 .run-tile {
   border-bottom: 1px solid rgba(0, 0, 0, .12);
   display: flex;
-  height: 72px;
   list-style-type: none;
   padding: 8px 16px;
 
   &__date {
+    line-height: normal;
     width: 72px;
   }
 }

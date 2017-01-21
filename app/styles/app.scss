@@ -1,4 +1,7 @@
-@import "normalize";
+@import 'settings';
+@import "foundation-sites/foundation";
+@include foundation-everything;
+@import 'normalize'; // TODO switch to foundation normalize
 
 $primaryColor: #28B0CE;
 $secondaryColor: #47E8B1;
