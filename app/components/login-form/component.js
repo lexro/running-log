@@ -13,6 +13,7 @@ export default Ember.Component.extend({
       event.preventDefault();
     })
     .on("invalid.zf.abide", function(ev,elem) {
+      // move this stuff to a 'validated-input' ember component
       const elementId = elem.attr('id');
       if (elementId === 'login-password') {
         _this.set('passwordValidationMessage', elem.validationMessage);
