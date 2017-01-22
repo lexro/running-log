@@ -13,8 +13,9 @@
       <input id="login-password" type="password" name="password" placeholder="Enter your password" data-validator="multiValidateText" required>
       <span class="form-error">{{passwordValidationMessage}}</span>
     </label>
-
-    <button type="submit" class="button expanded" value="Sign In">Sign In</button>
     <div class="text-center"><a href="#">Forgot your password?</a></div>
+    <button type="submit" class="button expanded" value="Sign In">Sign In</button>
+    <div class="text-center">or</div>
+    <div class="text-center">{{#link-to 'create-account'}}Create an Account{{/link-to}}</div>
   </div>
 </form>
