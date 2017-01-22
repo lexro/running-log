@@ -11,6 +11,7 @@ Router.map(function() {
   this.route('log');
   this.route('run', { path: "run/:runId" });
   this.route('login');
+  this.route('create-account');
 });
 
 export default Router;

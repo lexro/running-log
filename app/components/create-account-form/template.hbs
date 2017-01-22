@@ -1,0 +1,25 @@
+<form data-abide data-validate-on-blur="true" novalidate>
+  <div class="row column log-in">
+    <h2 class="text-center">Create an Account</h2>
+
+    <label for="account-email">
+      Email
+      <input id="account-email" type="email" name="account-email" placeholder="Enter your email" data-validator="multiValidateText" pattern="email" required>
+      <span class="form-error">{{emailValidationMessage}}</span>
+    </label>
+
+    <label for="account-password">
+      Password
+      <input id="account-password" type="password" name="account-password" placeholder="Enter your password" data-validator="multiValidateText" required>
+      <span class="form-error">{{passwordValidationMessage}}</span>
+    </label>
+
+    <label for="account-confirm-password">
+      Confirm Password
+      <input id="account-confirm-password" type="password" name="confirm-password" placeholder="Type your password again" data-equalTo="account-password" required>
+      <span class="form-error">Password should be equal</span>
+    </label>
+
+    <button type="submit" class="button expanded" value="Sign In">Create Account</button>
+  </div>
+</form>
