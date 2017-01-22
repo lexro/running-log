@@ -4,9 +4,9 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
 module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
-    // 'ember-cli-foundation-6-sass': {
-    //   'foundationJs': 'all' // TODO: only include stuff I need
-    // }
+    'ember-cli-foundation-6-sass': {
+      'foundationJs': 'all' // TODO: only include stuff I need
+    }
   });
 
   // Use `app.import` to add additional libraries to the generated

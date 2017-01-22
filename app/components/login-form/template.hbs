@@ -1,17 +1,17 @@
-<form>
+<form data-abide data-validate-on-blur="true" novalidate>
   <div class="row column log-in">
     <h2 class="text-center">Sign Into Your Account</h2>
 
-    <label for="email">
+    <label for="login-email">
       Email
-      <input id="email" type="text" name="email" placeholder="Enter your email" required>
-      <span class="form-error">This field is required.</span>
+      <input id="login-email" type="email" name="email" placeholder="Enter your email" data-validator="multiValidateText" pattern="email" required>
+      <span class="form-error">{{emailValidationMessage}}</span>
     </label>
 
-    <label for="password">
+    <label for="login-password">
       Password
-      <input id="password" type="password" name="password" placeholder="Enter your password" required>
-      <span class="form-error">This field is required.</span>
+      <input id="login-password" type="password" name="password" placeholder="Enter your password" data-validator="multiValidateText" required>
+      <span class="form-error">{{passwordValidationMessage}}</span>
     </label>
 
   {{!--  <div class="button expanded">Sign In</div> --}}
