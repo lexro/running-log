@@ -10,8 +10,8 @@
 
     <label for="account-password">
       Password
-      <input id="account-password" type="password" name="account-password" placeholder="Enter your password" data-validator="multiValidateText" required>
-      <span class="form-error">{{passwordValidationMessage}}</span>
+      <input id="account-password" type="password" name="account-password" placeholder="Enter your password" data-validator="passwordValidate" required>
+      <span class="form-error account-password-validation">{{passwordValidationMessage}}</span>
     </label>
 
     <label for="account-confirm-password">
