@@ -1,29 +1,25 @@
 import Ember from 'ember';
+import moment from 'moment';
 
 export default Ember.Component.extend({
-
-  initTimer: Ember.on('init', function () {
-    const _this = this;
-
-    const timerInterval = setInterval(() => {
-      const time = _this.read();
-      _this.set('currentTime', time);
-    }, 1);
-
-    this.set('timerInterval', timerInterval);
-  }),
-
   timerInterval: null,
 
   currentTime: 0,
 
   formattedTime: Ember.computed('currentTime', function () {
     const currentTime = this.get('currentTime');
+    const duration = moment.duration(Math.floor(currentTime), 'milliseconds');
 
-    return Math.floor(currentTime); // TODO: replace with 00:00:00
+    if (Math.floor(duration.asHours()) > 0) {
+      return duration.format('hh:mm:ss', { trim: false, precision: 2 });
+    }
+
+    return duration.format('mm:ss', { trim: false, precision: 2 });
   }),
 
-  startTime: '',
+  startTime: null,
+
+  lapTime: 0,
 
   start() {
     this.set('startTime', performance.now());
@@ -33,18 +29,56 @@ export default Ember.Component.extend({
     const startTime = this.get('startTime');
     const now = performance.now();
 
-    return now - startTime;
+    return this.get('lapTime') + now - startTime;
   },
 
   stop() {
-    this.set('stopTime', performance.now());
+    this.set('lapTime', this.read());
+    this.set('startTime', null);
   },
 
   reset() {
     clearInterval(this.get('timerInterval'));
+    this.set('timerInterval', null);
+    this.set('lapTime', 0);
+    this.set('startTime', null);
+    this.set('currentTime', 0);
   },
 
   willDestroyElement() {
     this.reset();
-  }
+  },
+
+  shouldStartTimer: null,
+
+  shouldPauseTimer: null,
+
+  shouldResetTimer: null,
+
+  // also resume
+  startTimer: Ember.observer('shouldStartTimer', function () {
+    if(this.get('shouldStartTimer')) {
+      const _this = this;
+
+      if (!_this.get('startTime')) {
+        this.start();
+
+        const timerInterval = setInterval(() => {
+          const time = _this.read();
+          _this.set('currentTime', time);
+        }, 1);
+
+        this.set('timerInterval', timerInterval);
+      }
+    }
+  }),
+
+  // also stop
+  pauseTimer: Ember.observer('shouldPauseTimer', function () {
+    if (this.get('shouldPauseTimer')) {
+      this.stop();
+      clearInterval(this.get('timerInterval'));
+      this.set('timerInterval', null);
+    }
+  })
 });

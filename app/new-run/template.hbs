@@ -6,7 +6,11 @@
 
 
   <section class="secondary-container">
-    <span class="elasped-time">{{stopwatch-timer}}</span>
+    <span class="elasped-time">
+      {{stopwatch-timer
+        shouldStartTimer=isRunning
+        shouldPauseTimer=isPaused}}
+    </span>
 
     <span class="pace">{{pace-tracker}}</span>
   </section>
@@ -14,12 +18,16 @@
   <section class="button-container">
     <span class="run-button primary-button">
       {{#if isRunning}}
-        {{fa-icon "fa-pause-circle"}}
+        <span {{ action "pauseRun"}}>
+          {{fa-icon "fa-pause-circle"}}
+        </span>
       {{else}}
-        {{fa-icon "fa-play-circle"}}
+        <span {{action "startRun"}}>
+          {{fa-icon "fa-play-circle"}}
+        </span>
       {{/if}}
     </span>
-    <span class="run-button secondary-button">
+    <span class="run-button secondary-button" {{action "endRun"}}>
       {{fa-icon "fa-stop-circle"}}
     </span>
   </section>
