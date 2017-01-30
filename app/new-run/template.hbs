@@ -1,9 +1,12 @@
 <div class="run-tracker-container">
   <section class="primary-container">
-    <span class="distance">{{distance-tracker}}</span>
-    <div>miles</div>
+    <span class="distance">
+      {{distance-tracker
+        shouldStartTracker=isRunning
+        shouldPauseTracker=isPaused}}
+    </span>
+    <div>kilometers</div>
   </section>
-
 
   <section class="secondary-container">
     <span class="elasped-time">
@@ -12,7 +15,12 @@
         shouldPauseTimer=isPaused}}
     </span>
 
-    <span class="pace">{{pace-tracker}}</span>
+    <div>
+      <span class="pace">{{pace-tracker}}</span>
+      <div>
+        min/km
+      </div>
+    </div>
   </section>
 
   <section class="button-container">

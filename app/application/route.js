@@ -95,8 +95,33 @@ export default Ember.Route.extend({
     return valid;
   },
 
-  setupController( controller, model ) {
+  // help from https://www.html5rocks.com/en/tutorials/geolocation/trip_meter/
+  _initGeoLocation() {
+    // check for Geolocation support
+    if (navigator.geolocation) {
+      // ask for geo location support early
+      navigator.geolocation.getCurrentPosition((position) => {
+        console.log('position:', position);
+      }, (error) => {
+        console.log('Error occurred. Error code: ' + error.code);
+        // error.code can be:
+        //   0: unknown error
+        //   1: permission denied
+        //   2: position unavailable (error response from locaton provider)
+        //   3: timed out
+      });
+    }
+    else {
+      console.log('Geolocation is not supported for this Browser/OS version yet.');
+    }
+  },
+
+  setupController(controller, model) {
     this._super(controller, model);
     Ember.run.scheduleOnce( 'afterRender', this._initFoundation.bind(this));
+    Number.prototype.toRad = function() {
+      return this * Math.PI / 180;
+    };
+    this._initGeoLocation();
   },
 });
