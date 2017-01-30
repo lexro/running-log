@@ -9,7 +9,6 @@ const Router = Ember.Router.extend({
 Router.map(function() {
   this.route('new-run');
   this.route('log');
-  this.route('run', { path: "run/:runId" });
   this.route('login');
   this.route('create-account');
 });
