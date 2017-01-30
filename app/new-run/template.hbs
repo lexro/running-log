@@ -3,7 +3,8 @@
     <span class="distance">
       {{distance-tracker
         shouldStartTracker=isRunning
-        shouldPauseTracker=isPaused}}
+        shouldPauseTracker=isPaused
+        distance=(mut distance)}}
     </span>
     <div>kilometers</div>
   </section>
@@ -12,11 +13,17 @@
     <span class="elasped-time">
       {{stopwatch-timer
         shouldStartTimer=isRunning
-        shouldPauseTimer=isPaused}}
+        shouldPauseTimer=isPaused
+        currentTime=(mut currentTime)}}
     </span>
 
     <div>
-      <span class="pace">{{pace-tracker}}</span>
+      <span class="pace">
+        {{pace-tracker
+          distance=distance
+          time=currentTime
+          pace=(mut pace)}}
+      </span>
       <div>
         min/km
       </div>
