@@ -19,6 +19,10 @@ module.exports = function(defaults) {
       ],
       // changing this version number will bust the cache
       version: '6'
+    },
+    // https://discuss.emberjs.com/t/touch-based-actions/6426/3
+    customEvents: {
+      tap: 'click'
     }
   });
 
