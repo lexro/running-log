@@ -6,6 +6,11 @@ module.exports = function(defaults) {
   var app = new EmberApp(defaults, {
     'ember-cli-foundation-6-sass': {
       'foundationJs': 'all' // TODO: only include stuff I need
+    },
+
+    'asset-cache': {
+      // changing this version number will bust the cache
+      version: '1',
     }
   });
 

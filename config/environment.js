@@ -1,10 +1,11 @@
 /* jshint node: true */
+const yargs = require('yargs');
 
 module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'running-log',
     environment: environment,
-    rootURL: '/',
+    rootURL: yargs.argv['root-url'] || '/',
     locationType: 'auto',
     EmberENV: {
       FEATURES: {
