@@ -2,20 +2,23 @@
   <nav class="nav-container">
     <ul class="nav-list">
       <li class="nav-list__item brand">
-        <span class="logo"></span>
-        <span class="app-title">Run Log</span>
-        </li>
+        {{#link-to 'index'}}
+          <span class="logo"></span>
+          <span class="app-title">Run Log</span>
+        {{/link-to}}
+      </li>
 
-        {{#link-to 'login'}}
-          <li class="nav-list__item sign-in-button">
-            Sign In
-          </li>
-        {{/link-to}}
-        {{#link-to 'new-run'}}
-          <li class="nav-list__item new-run-button">
-            New Run+
-          </li>
-        {{/link-to}}
+      {{#link-to 'login'}}
+        <li class="nav-list__item sign-in-button">
+          Sign In
+        </li>
+      {{/link-to}}
+
+      {{#link-to 'new-run'}}
+        <li class="nav-list__item new-run-button">
+          New Run+
+        </li>
+      {{/link-to}}
     </ul>
   </nav>
 </header>
