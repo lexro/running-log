@@ -12,14 +12,13 @@ module.exports = function(defaults) {
       // RegExp patterns specifying which URLs to cache.
       patterns: [
         '/',
-        '(.+)index.html(.+)',
-        '/(.+)assets(.+)',
+        '.+/index.html.+',
+        '.+/assets.+',
         'https://lexro.github.io/running-log/',
         'https://fonts.googleapis.com/css(.+)',
       ],
-
       // changing this version number will bust the cache
-      version: '4'
+      version: '6'
     }
   });
 
