@@ -7,16 +7,14 @@ module.exports = function(defaults) {
     'ember-cli-foundation-6-sass': {
       'foundationJs': 'all' // TODO: only include stuff I need
     },
-
-    'esw-cache-first': {
-      // RegExp patterns specifying which URLs to cache.
-      patterns: [
-        '/assets/(.+)',
+    'asset-cache': {
+      // manually include extra assets
+      manual: [
         'https://fonts.googleapis.com/css?family=Roboto:400,700'
       ],
 
       // changing this version number will bust the cache
-      version: '2'
+      version: '3',
     }
   });
 
