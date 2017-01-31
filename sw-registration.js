@@ -1,1 +1,43 @@
-!function(){"use strict";var e=[],n=[];"serviceWorker"in navigator&&navigator.serviceWorker.register("/running-log/sw.js",{scope:"/running-log/"}).then(function(n){for(var r=Promise.resolve(),o=function(o){r=r.then(function(){return e[o](n)})},t=0;t<e.length;t++)o(t);return r.then(function(){console.log("Service Worker registration succeeded. Scope is "+n.scope)})}).catch(function(e){for(var r=Promise.resolve(),o=function(o){r=r.then(function(){return n[o](e)})},t=0;t<n.length;t++)o(t);return r.then(function(){console.log("Service Worker registration failed with "+e)})})}();
+(function () {
+  'use strict';
+
+  var SUCCESS_HANDLERS = [];
+  var ERROR_HANDLERS = [];
+
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('running-logsw.js', { scope: 'running-log' }).then(function (reg) {
+      var current = Promise.resolve();
+
+      var _loop = function (i) {
+        current = current.then(function () {
+          return SUCCESS_HANDLERS[i](reg);
+        });
+      };
+
+      for (var i = 0; i < SUCCESS_HANDLERS.length; i++) {
+        _loop(i);
+      }
+
+      return current.then(function () {
+        console.log('Service Worker registration succeeded. Scope is ' + reg.scope);
+      });
+    })['catch'](function (error) {
+      var current = Promise.resolve();
+
+      var _loop2 = function (i) {
+        current = current.then(function () {
+          return ERROR_HANDLERS[i](error);
+        });
+      };
+
+      for (var i = 0; i < ERROR_HANDLERS.length; i++) {
+        _loop2(i);
+      }
+
+      return current.then(function () {
+        console.log('Service Worker registration failed with ' + error);
+      });
+    });
+  }
+
+}());

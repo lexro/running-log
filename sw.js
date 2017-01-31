@@ -1,1 +1,72 @@
-!function(){"use strict";function e(e,n){return caches.keys().then(function(t){t.forEach(function(t){var s=0===t.indexOf(e),a=t!==n;s&&a&&caches.delete(t)})})}self.addEventListener("install",function(e){return self.skipWaiting()}),self.addEventListener("activate",function(e){return self.clients.claim()});var n=["assets/running-log-02d0e92f520f8ce7782b9afeb3b5d03f.js","assets/running-log-8fa6f11ea2d51e949463ad2aa8be6f4c.css","assets/vendor-045a666e4a8dd115ef4b919501a15212.css","assets/vendor-4b5bc45fa9cfc6d825b0954b3634834b.js"],t=void 0,s="1",a="esw-asset-cache",c=a+"-"+s,i=n.map(function(e){return new URL(e,t||self.location).toString()}),f=function(){caches.open(c).then(function(e){return e.keys().then(function(n){n.forEach(function(n){i.indexOf(n.url)===-1&&e.delete(n)})})})};self.addEventListener("install",function(e){e.waitUntil(caches.open(c).then(function(e){return e.addAll(i)}))}),self.addEventListener("activate",function(n){n.waitUntil(Promise.all([e(a,c),f()]))}),self.addEventListener("fetch",function(e){var n="GET"===e.request.method,t=i.indexOf(e.request.url)!==-1;n&&t&&e.respondWith(caches.match(e.request,{cacheName:c}))})}();
+(function () {
+  'use strict';
+
+  self.addEventListener('install', function installEventListenerCallback(event) {
+    return self.skipWaiting();
+  });
+
+  self.addEventListener('activate', function installEventListenerCallback(event) {
+    return self.clients.claim();
+  });
+
+  var VERSION$1 = '2';
+  var PATTERNS = ['/assets/(.+)', 'https://fonts.googleapis.com/css?family=Roboto:400,700'];
+
+  /*
+   * Deletes all caches that start with the `prefix`, except for the
+   * cache defined by `currentCache`
+   */
+  function cleanupCaches (prefix, currentCache) {
+    return caches.keys().then(function (cacheNames) {
+      cacheNames.forEach(function (cacheName) {
+        var isOwnCache = cacheName.indexOf(prefix) === 0;
+        var isNotCurrentCache = cacheName !== currentCache;
+
+        if (isOwnCache && isNotCurrentCache) {
+          caches["delete"](cacheName);
+        }
+      });
+    });
+  }
+
+  var CACHE_KEY_PREFIX = 'esw-cache-first';
+  var CACHE_NAME = CACHE_KEY_PREFIX + '-' + VERSION$1;
+
+  var PATTERN_REGEX = PATTERNS.map(function (pattern) {
+    var normalized = new URL(pattern, self.location).toString();
+    return new RegExp('^' + normalized + '$');
+  });
+
+  var MATCH = function MATCH(key) {
+    return !!PATTERN_REGEX.find(function (pattern) {
+      return pattern.test(key);
+    });
+  };
+
+  self.addEventListener('fetch', function (event) {
+    var request = event.request;
+    if (request.method !== 'GET' || !/^https?/.test(request.url)) {
+      return;
+    }
+
+    if (MATCH(request.url)) {
+      event.respondWith(caches.open(CACHE_NAME).then(function (cache) {
+        return cache.match(request).then(function (response) {
+          if (response) {
+            return response;
+          }
+
+          return fetch(request).then(function (response) {
+            cache.put(request, response.clone());
+            return response;
+          });
+        });
+      }));
+    }
+  });
+
+  self.addEventListener('activate', function (event) {
+    event.waitUntil(cleanupCaches(CACHE_KEY_PREFIX, CACHE_NAME));
+  });
+
+}());
