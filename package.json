@@ -43,6 +43,7 @@
     "ember-resolver": "^2.0.3",
     "ember-service-worker": "0.6.0",
     "ember-service-worker-asset-cache": "0.6.0",
+    "ember-service-worker-cache-first": "0.6.1",
     "loader.js": "^4.0.10",
     "normalize.css": "4.1.1",
     "yargs": "^6.6.0"
