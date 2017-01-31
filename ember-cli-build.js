@@ -8,9 +8,15 @@ module.exports = function(defaults) {
       'foundationJs': 'all' // TODO: only include stuff I need
     },
 
-    'asset-cache': {
+    'esw-cache-first': {
+      // RegExp patterns specifying which URLs to cache.
+      patterns: [
+        '/assets/(.+)',
+        'https://fonts.googleapis.com/css?family=Roboto:400,700'
+      ],
+
       // changing this version number will bust the cache
-      version: '1',
+      version: '2'
     }
   });
 
