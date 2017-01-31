@@ -31,18 +31,18 @@
   </section>
 
   <section class="button-container">
-    <span class="run-button primary-button">
+    <span role="button" class="run-button primary-button" tabindex="0">
       {{#if isRunning}}
-        <span {{ action "pauseRun"}}>
+        <span aria-label="Pause Run" {{ action "pauseRun"}}>
           {{fa-icon "fa-pause-circle"}}
         </span>
       {{else}}
-        <span {{action "startRun"}}>
+        <span aria-label="Start Run" {{action "startRun"}}>
           {{fa-icon "fa-play-circle"}}
         </span>
       {{/if}}
     </span>
-    <span class="run-button secondary-button" {{action "endRun"}}>
+    <span role="button" aria-label="End Run" class="run-button secondary-button" {{action "endRun"}} tabindex="0">
       {{fa-icon "fa-stop-circle"}}
     </span>
   </section>
