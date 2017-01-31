@@ -11,12 +11,14 @@ module.exports = function(defaults) {
     'esw-cache-first': {
       // RegExp patterns specifying which URLs to cache.
       patterns: [
-        '/(.+)',
+        '/',
+        'index.html',
+        'assets/(.+)',
         'https://fonts.googleapis.com/css(.+)',
       ],
 
       // changing this version number will bust the cache
-      version: '3'
+      version: '4'
     }
   });
 

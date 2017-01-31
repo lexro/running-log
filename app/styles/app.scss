@@ -77,7 +77,6 @@ $header-box-shadow: 0 1px 3px 0 rgba(27,36,50,.15);
   background: $secondaryColor;
   border-radius: 3px;
   color: $light-text-color;
-  $light-text-color: black;
   padding: 5px;
 }
 
@@ -94,6 +93,17 @@ a {
     max-width: 400px;
     margin: auto;
   }
+}
+
+.run-log-link {
+  background: $primaryColor;
+  border-radius: 10px;
+  color: $light-text-color;
+  margin: auto;
+  margin-top: 150px;
+  padding: 10px;
+  text-align: center;
+  width: 200px;
 }
 
 @import 'components/create-account-form';
