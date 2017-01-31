@@ -14,6 +14,7 @@ module.exports = function(defaults) {
         '/',
         'index.html',
         'assets/(.+)',
+        'https://lexro.github.io/running-log/(.+)',
         'https://fonts.googleapis.com/css(.+)',
       ],
 
