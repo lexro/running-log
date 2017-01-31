@@ -12,9 +12,9 @@ module.exports = function(defaults) {
       // RegExp patterns specifying which URLs to cache.
       patterns: [
         '/',
-        'index.html',
-        'assets/(.+)',
-        'https://lexro.github.io/running-log/(.+)',
+        '(.+)index.html(.+)',
+        '/(.+)assets(.+)',
+        'https://lexro.github.io/running-log/',
         'https://fonts.googleapis.com/css(.+)',
       ],
 
