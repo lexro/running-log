@@ -6,6 +6,7 @@ export default Ember.Component.extend({
   passwordValidationMessage: '',
 
   didInsertElement() {
+    Ember.$(document).foundation();
     const _this = this;
 
     // to prevent form from submitting upon successful validation
