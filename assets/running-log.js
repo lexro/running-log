@@ -1014,7 +1014,7 @@ catch(err) {
 /* jshint ignore:start */
 
 if (!runningTests) {
-  require("running-log/app")["default"].create({"name":"running-log","version":"0.0.0+b54c9370"});
+  require("running-log/app")["default"].create({"name":"running-log","version":"0.0.0+de0b9cd0"});
 }
 
 /* jshint ignore:end */
